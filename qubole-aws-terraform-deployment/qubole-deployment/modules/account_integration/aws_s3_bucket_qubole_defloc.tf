@@ -20,7 +20,7 @@ Creates an S3 Bucket that will act as the "default location" for the Qubole acco
 
 resource "aws_s3_bucket" "qubole-default_location" {
   bucket = "${var.qubole-defloc-name}-${var.deployment_suffix}"
-  region = var.data_lake_project_region
+  #region = var.data_lake_project_region (This is commented out as newer version of terraform specifics)
   #careful with this
   force_destroy = true
 }
