@@ -84,4 +84,5 @@ output "hive_metastore_db_user" {
 
 output "hive_metastore_db_user_password" {
   value = module.hive_metastore.hive_metastore_user_password
+  senstive = true 
 }
