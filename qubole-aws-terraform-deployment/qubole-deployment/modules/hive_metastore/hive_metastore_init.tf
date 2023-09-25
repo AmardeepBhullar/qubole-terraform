@@ -16,7 +16,7 @@ resource "aws_security_group_rule" "sg_rule_for_terraform_access_to_bastion" {
   security_group_id = var.qubole_bastion_security_group
   to_port = 22
   type = "ingress"
-  cidr_blocks = ["${data.external.whatismyip.result["internet_ip"]}/32"]
+  cidr_blocks = [format("%s/%s",data.external.whatismyip.result["internet_ip"],32)]
 }
 
 data "template_file" "hive_metastore_init_template" {
