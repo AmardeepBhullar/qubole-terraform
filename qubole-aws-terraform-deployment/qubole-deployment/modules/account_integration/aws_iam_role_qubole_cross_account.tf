@@ -21,6 +21,14 @@ resource "aws_iam_role" "qubole_cross_account_role" {
   name = "qubole_cross_account_role_${var.deployment_suffix}"
   assume_role_policy = data.template_file.qubole_cross_account_role_trust_template.rendered
 }
+resource "aws_iam_instance_profile" "qubole_cross_account_role_instance_profile" {
+name = "qubole_cross_account_role_${var.deployment_suffix}"
+role = aws_iam_role.qubole_cross_account_role.name
+}
+
+output "qubole_cross_account_role_instance_profile" {
+value = aws_iam_instance_profile.qubole_cross_account_role_instance_profile.arn
+}
 
 output "qubole_cross_account_role_arn" {
   value = aws_iam_role.qubole_cross_account_role.arn
