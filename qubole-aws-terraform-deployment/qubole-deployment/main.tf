@@ -1,6 +1,10 @@
-provider "aws" {
-  version = "~> 2.0"
-  region  = "ap-southeast-1"
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.0"
+    }
+  }
 }
 
 resource "random_id" "deployment_suffix" {
@@ -83,6 +87,7 @@ output "hive_metastore_user" {
 
 output "hive_metastore_password" {
   value = module.hive_metastore.hive-metastore-db-password
+  senstive = true 
 }
 
 output "hive_metastore_db_name" {
