@@ -21,7 +21,7 @@ resource "aws_db_instance" "hive_metastore_db_instance" {
   engine = "mysql"
   engine_version = "5.7"
   instance_class = var.db_instance_class
-  name = "hive"
+  db_name = var.hive_db_name
   username = var.hive_user_name
   password = var.hive_user_password
   parameter_group_name = "default.mysql5.7"
